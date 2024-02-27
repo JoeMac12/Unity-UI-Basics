@@ -14,20 +14,21 @@ public class UIManager : MonoBehaviour
         UpdateScoreDisplay();
     }
 
-    public void ScoreUpdate(int change)
+    public void ModifyScore(int change) // Main method
     {
-        score += change;
-        UpdateScoreDisplay();
-    }
-
-    public void ResetScore()
-    {
-        score = 0;
+        if (change == 0)
+        {
+            score = 0;
+        }
+        else
+        {
+            score += change;
+        }
         UpdateScoreDisplay();
     }
 
     private void UpdateScoreDisplay()
     {
-        scoreText.text = score.ToString("D9");
+        scoreText.text = score.ToString("D9"); // Format
     }
 }

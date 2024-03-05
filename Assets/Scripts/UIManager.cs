@@ -14,6 +14,12 @@ public class UIManager : MonoBehaviour
 	public Slider blueSlider;
 	public Slider alphaSlider;
 	public Image targetImage;
+	public TextMeshProUGUI visibilityText;
+
+	public TextMeshProUGUI option;
+
+	public TMP_InputField nameInputField;
+	public TextMeshProUGUI nameText;
 
 	private int score = 0;
 
@@ -21,6 +27,8 @@ public class UIManager : MonoBehaviour
 	{
 		UpdateScoreDisplay();
 		UpdateColor();
+		UpdateNameText();
+		UpdateVisibilityText();
 	}
 
 	public void ModifyScore(int change) // Main method
@@ -66,6 +74,19 @@ public class UIManager : MonoBehaviour
 		if (key != null)
 		{
 			key.enabled = !key.enabled;
+			UpdateVisibilityText();
+		}
+	}
+
+	private void UpdateVisibilityText() // Change text based on image state
+	{
+		if (key.enabled)
+		{
+			visibilityText.text = "Hide";
+		}
+		else
+		{
+			visibilityText.text = "Show";
 		}
 	}
 
@@ -78,5 +99,26 @@ public class UIManager : MonoBehaviour
 	{
 		Color newColor = new Color(redSlider.value, greenSlider.value, blueSlider.value, alphaSlider.value);
 		targetImage.color = newColor;
+	}
+
+	public void UpdateNameText() // Input Field for name
+	{
+		nameText.text = "Welcome: " + nameInputField.text;
+	}
+
+	public void ChooseColor(int val) // Dropdown for changing title color
+	{
+		if (val == 0)
+		{
+			option.color = Color.red;
+		}
+		if (val == 1)
+		{
+			option.color = Color.green;
+		}
+		if (val == 2)
+		{
+			option.color = Color.yellow;
+		}
 	}
 }

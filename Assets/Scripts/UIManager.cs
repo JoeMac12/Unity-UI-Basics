@@ -82,11 +82,11 @@ public class UIManager : MonoBehaviour
 	{
 		if (key.enabled)
 		{
-			visibilityText.text = "Hide";
+			visibilityText.text = "Hide Key";
 		}
 		else
 		{
-			visibilityText.text = "Show";
+			visibilityText.text = "Show Key";
 		}
 	}
 
